@@ -1,6 +1,6 @@
 <?php
 use App\core\Router;
-use App\controllers\articleController;
+use App\Controller\UserController;
 
 
 $router = new Router();

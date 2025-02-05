@@ -1,6 +1,10 @@
 <?php
+namespace App\Controller;
+require_once __DIR__."/../../vendor/autoload.php";
 
-use App\core\controller;
+use App\Models\UserModel;
+use App\core\Controller;
+use App\Utils\Validator;
 
 class UserController extends controller {
     public function showAll() {

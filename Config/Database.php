@@ -1,8 +1,7 @@
 <?php
 
-namespace config;
+namespace Config;
 
-require '../vendor/autoload.php';
 
 use PDO;
 use PDOException;

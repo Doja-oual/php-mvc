@@ -35,7 +35,7 @@ class Router extends Controller
             $action = $this->routes[$method][$uri]['action'];
             // var_dump($controller);
             // var_dump($action);
-
+            
             $controller = new $controller();
             // var_dump($controller);
             $controller->$action();

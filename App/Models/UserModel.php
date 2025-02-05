@@ -1,7 +1,8 @@
 <?php
 
-// UserModel.php
-
+namespace App\Models;
+require_once __DIR__."/../../vendor/autoload.php";
+use Config\Database;
 class UserModel {
 
     private $db;
@@ -14,16 +15,16 @@ class UserModel {
     public function getUserById($id) {
         $query = "SELECT * FROM users WHERE id = :id";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_OBJ);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
     // Récupère tous les utilisateurs
     public function getAllUsers() {
         $query = "SELECT * FROM users";
         $stmt = $this->db->query($query);
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     // Ajoute un nouvel utilisateur
@@ -41,7 +42,7 @@ class UserModel {
     public function updateUser($id, $name, $email) {
         $query = "UPDATE users SET name = :name, email = :email WHERE id = :id";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         return $stmt->execute();
@@ -51,7 +52,7 @@ class UserModel {
     public function deleteUser($id) {
         $query = "DELETE FROM users WHERE id = :id";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         return $stmt->execute();
     }
 
@@ -61,7 +62,7 @@ class UserModel {
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
-        $user = $stmt->fetch(PDO::FETCH_OBJ);
+        $user = $stmt->fetch(\PDO::FETCH_OBJ);
         
         if ($user && password_verify($password, $user->password)) {
             return $user;
