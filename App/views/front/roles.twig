@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Rôles</title>
+</head>
+<body>
+    <h1>Rôles</h1>
+    <ul>
+        {% for role in roles %}
+            <li>
+                <a href="/front/showRole/{{ role.id }}">{{ role.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
