@@ -1,10 +1,13 @@
 <?php
 
-class UserController {
+use App\core\controller;
+
+class UserController extends controller {
     public function showAll() {
         $userModel = new UserModel();
         $users = $userModel->getAllUsers();
-        include 'view/user/index.php';
+        // include 'view/user/index.php';
+        $this->render('index',['users'=>$users]);
     }
 
     public function show($id) {
